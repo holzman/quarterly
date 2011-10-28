@@ -146,8 +146,8 @@ convert -extent 740x504 -crop 740x480+0-24 cms_bytes2.jpg \
     -draw "fill magenta stroke magenta translate 500,255 text 0, 0 'Users'  scale .5,.5 translate 190,-80 rotate -30 $pointer " \
     processed/bytes_on_tape.png
 
-fi
-# figure 12
+
+# figure 12 - bytes on tape delta
 convert -extent 740x504 -crop 740x480+0-24 cms_bytes3.jpg \
     -fill white -stroke white \
     -draw "translate 0,20 rectangle 70,401 720,504" \
@@ -158,6 +158,36 @@ convert -extent 740x504 -crop 740x480+0-24 cms_bytes3.jpg \
     text 200,0 '8/1' \
     text 400,0 '9/1' \
     text 600,0 '9/30'" \
-\
-    processed/foo.png
+    -draw "translate 450,160 text 0, 0 'Additions'  scale 1,.75 translate 60, 20 rotate -90 $pointer " \
+    -draw "translate 450,360 text 0, 0 'Deletions'  scale 1,.75 translate 60, -40 rotate 90 $pointer " \
+    processed/bytes_on_tape_delta.png
 
+# figure 13 - bytes on tape since LHC start
+convert ALL.jpg \
+    \( custodial_tape_storage_pie.png -transparent white -crop 1000x700+0+50 -resize 250x  \) -geometry +80+40\
+    -composite \
+    -pointsize 28 -extent 740x540 \
+\
+    -fill white -stroke white \
+    -draw "translate 0,70 rectangle 0,401 720,504" \
+    -draw "translate 0,0 rectangle 0,0 88,500" \
+    -draw "rectangle 0,0 740,30" \
+\
+    -fill black -stroke black \
+\
+    -draw "translate 10,85 \
+	text 0,0 '9 PB' \
+	text 0,88 '8 PB' \
+	text 0,175 '7 PB' \
+	text 0,263 '6 PB' \
+	text 0,350 '5 PB' \
+	" \
+    -draw "translate 00,70 translate 70,430 \
+    text 0,0 \"Sep '09\" \
+    text 200,0 \"May '10\" \
+    text 400,0 \"Feb '11\" \
+    text 580,0 \"Sep '11\" " \
+\
+    -draw "text 400, 80 'Bytes on Tape'" \
+    processed/bytes_on_tape_since_LHC_start.png
+fi
