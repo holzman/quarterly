@@ -34,7 +34,4 @@ curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsdcam2.fnal.g
 curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsjobmon.fnal.gov/RepairHistory-stat-simple.jpg 
 curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsjobmon.fnal.gov/RepairHistory-disk-simple.jpg  
 
-echo "Do cp ~/opsreport/image1.png ~/quarterly/whatever/t1-performance-tests.jpg"
-
-
-
+echo "Do cp ~/opsreport/1.jpg ~/quarterly/whatever/t1-performance-tests.jpg"
