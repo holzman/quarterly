@@ -3,15 +3,18 @@
 credname=x509up_u`id -u`
 credfile=/tmp/${credname}
 
-month=04
-day=01
+echo "Edit the getplots.sh script to get the right dates..."
+
+month=09
+day=30
 year=2012
 
-begin=2012-01-01
-end=2012-03-31
+begin=2012-07-01
+end=2012-09-30
+
 curl -s -x "" -O http://cms-project-relval.web.cern.ch/cms-project-relval/CustodialSummary/${year}/${month}/${day}/custodial_tape_storage_pie.png
 curl -s -x "" -O http://cmsdcam3.fnal.gov:8081/DOEmetrics/FNALViewHistoryParser2.jpg
-curl -s -x "" -O http://cmsdcam3.fnal.gov:8081/DOEmetrics/TestJobsBars90.png
+curl -s -x "" -o month-ranking-plot.png http://cmsdcam3.fnal.gov:8081/DOEmetrics/TestJobsBars90.png
 curl -s -x "" -O http://cmsdcam3.fnal.gov:8081/DOEmetrics/cms_farm_usgae1.jpg
 
 curl -s -x "" -o site-avail.png http://cmsdcam3.fnal.gov:8081/DOEmetrics/ReadinessBars90.png
@@ -33,5 +36,7 @@ curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsdcam2.fnal.g
 curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsdcam2.fnal.gov/dcache/CMS_BYTES/ALL.jpg 
 curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsjobmon.fnal.gov/RepairHistory-stat-simple.jpg 
 curl -s -x "" -O -k --key ${credfile} --cert ${credfile} https://cmsjobmon.fnal.gov/RepairHistory-disk-simple.jpg  
+
+curl -s -x "" -O -k --key ${credfile} --cert ${credfile} http://cmsdcam3.fnal.gov:8081/tape_verified_delay_plot-90.jpg
 
 echo "Do cp ~/opsreport/1.jpg ~/quarterly/whatever/t1-performance-tests.jpg"
